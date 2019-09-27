@@ -321,3 +321,7 @@ CRONJOBS = [
      '>> ' + os.path.join(os.path.dirname(BASE_DIR), 'logs/crontab.log'))
 ]
 CRONTAB_COMMAND_PREFIX = 'LANG_ALL=zh_cn.UTF-8'  # 支持中文
+
+REST_FRAMEWORK = {
+    'EXCEPTION_HANDLER': 'meiduo_admin.utils.exceptions.exception_handler'
+}
