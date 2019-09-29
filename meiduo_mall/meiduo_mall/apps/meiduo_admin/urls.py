@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from meiduo_admin.views import users, statistical, channels, skus
+from meiduo_admin.views import users, statistical, channels, skus, spus
 from rest_framework.routers import DefaultRouter
 
 urlpatterns = [
@@ -15,6 +15,9 @@ urlpatterns = [
     url(r'^goods/channel_types/$', channels.ChannelTypesView.as_view()),
     url(r'^goods/categories/$', channels.ChannelCategoriesView.as_view()),
     url(r'^skus/simple/$', skus.SKUSimpleView.as_view()),
+    url(r'^skus/categories/$', skus.SKUCategoriesView.as_view()),
+    url(r'^goods/simple/$', spus.SPUSimpleView.as_view()),
+    url(r'^goods/(?P<pk>\d+)/specs/$', spus.SPUSpecView.as_view()),
 
 ]
 
@@ -25,4 +28,9 @@ urlpatterns += router.urls
 # 图片管理
 router = DefaultRouter()
 router.register(r'skus/images', skus.SKUImageViewSet, base_name='images')
+urlpatterns += router.urls
+
+# SKU商品管理
+router = DefaultRouter()
+router.register('skus', skus.SKUViewSet, base_name='skus')
 urlpatterns += router.urls
