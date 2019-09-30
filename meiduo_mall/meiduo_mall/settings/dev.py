@@ -68,7 +68,7 @@ INSTALLED_APPS = [
     'orders.apps.OrdersConfig',
     'payments.apps.PaymentsConfig',
 
-    # 'haystack',
+    'haystack',
     'django_crontab',  # 定时任务
 ]
 
@@ -170,7 +170,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # 指定静态文件的存放目录
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # 缓存
 CACHES = {
@@ -296,18 +296,18 @@ FDFS_CLIENT_CONF = os.path.join(BASE_DIR, 'utils/fdfs/client.conf')
 DEFAULT_FILE_STORAGE = 'meiduo_mall.utils.fdfs.storage.FDFSStorage'
 
 # Haystack
-# HAYSTACK_CONNECTIONS = {
-#     'default': {
-#         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-#         'URL': 'http://192.168.47.128:9200/',  # Elasticsearch服务器ip地址，端口号固定为9200
-#         'INDEX_NAME': 'meiduo_tbd39',  # Elasticsearch建立的索引库的名称
-#     },
-# }
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://172.20.10.12:9200/',  # Elasticsearch服务器ip地址，端口号固定为9200
+        'INDEX_NAME': 'meiduo_mall',  # Elasticsearch建立的索引库的名称
+    },
+}
 
 # 当添加、修改、删除数据时，自动生成索引
-# HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 # # 页大小
-# HAYSTACK_SEARCH_RESULTS_PER_PAGE = 2
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 2
 
 # 支付宝配置
 ALIPAY_APPID = '2016082100304973'  # 商家账号

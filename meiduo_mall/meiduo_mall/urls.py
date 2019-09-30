@@ -24,7 +24,7 @@ urlpatterns = [
     url('^', include('oauth.urls')),
     url('^', include('areas.urls')),
     url('^', include('goods.urls')),
-    # url(r'^search/', include('haystack.urls')),
+    url(r'^search/', include('haystack.urls')),
     url('^', include('carts.urls')),
     url('^', include('orders.urls')),
     url('^', include('payments.urls')),
